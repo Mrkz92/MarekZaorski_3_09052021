@@ -1,15 +1,23 @@
 @font-face {
-    font-family: 'robotoregular';
-    src: url('Roboto-Regular-webfont.woff');
+    font-family: 'robotolight';
+    src: url('Roboto-Light-webfont.eot');
+    src: url('Roboto-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Roboto-Light-webfont.woff2') format('woff2'),
+         url('Roboto-Light-webfont.woff') format('woff'),
+         url('Roboto-Light-webfont.ttf') format('truetype'),
+         url('Roboto-Light-webfont.svg#robotolight') format('svg');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'shriklandregular';
-    src: url(Shrikhand-Regular.ttf.woff);
-    font-weight: normal;
-    font-style: normal;
+    font-family: 'shrikhandregular';
+    src:url('Shrikhand-Regular.ttf.woff') format('woff'),
+        url('Shrikhand-Regular.ttf.svg#Shrikhand-Regular') format('svg'),
+        url('Shrikhand-Regular.ttf.eot'),
+        url('Shrikhand-Regular.ttf.eot?#iefix') format('embedded-opentype'); 
+        font-weight: bold;
+        font-style: normal;
 }
 
  /* Variables */
@@ -17,6 +25,7 @@
 $primary: #9356DC;
 $secondary: #FF79DA;
 $tertiary: #99E2D0;
+$Clearpurple: #F5EDFF;
 $cleargrey: #F6F6F6;
 $grey: #EAEAEA;
 $shadowgrey: #E9E9E9;
@@ -25,27 +34,39 @@ $greenmint: #99E2D0;
 $greenmintdark: #008766;
 
 * {
-    font-family: 'robotoregular';
+    font-family: 'robotolight', arial, sans-serif;
 }
 
 a {
     color: inherit;
     text-decoration: none;
 }
+
 body {margin: 0;}
+
+.fa-heart.far {
+    font-size: 1.5rem;
+}
+ 
+.fa-heart.far:focus {
+    background-size: auto;
+    background-image: linear-gradient(0deg, $secondary, $primary);
+}
 
 /* HEADER */
 header {
+    padding: 0 1rem;
     box-shadow: 0 0 10px 0 grey;
     height: 4rem;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    z-index: 1;
     
-    i {
-        justify-self: flex-start;
+    .fa-arrow-left.fas {
+        position: absolute;
+        left: 1rem;
+        top: 1.5rem;
     }
 
     img {
@@ -93,28 +114,50 @@ header {
         padding: 1rem 1rem;
         text-align: center;
         }
+}
 
-    &__button {
-        display: flex;
-        align-content: center;
-        justify-content: center;
+.button {
+    display: flex;
+    align-content: center;
+    justify-content: center;
 
-        & input {
-            box-shadow: 0px 5px 5px 3px $grey;
-            border-radius: 3rem;
-            font-size: 1rem;
-            height: 3rem;
-            width: 14rem;
-            border: none;
-            color: white;
-            background-image: linear-gradient(170deg, $secondary, $primary);
-        }
-   }
+    &--search {
+        width: 14rem; 
+        box-shadow: 0px 5px 10px -5px grey;
+    }
+
+    &--search:hover {
+        box-shadow: 0px 5px 10px 0px grey;
+    }
+
+    &--order {
+        width: 12rem;
+        margin: 2rem 0;
+        box-shadow: 0px 5px 15px -5px grey;
+    }
+
+    &--order:hover {
+        box-shadow: 0px 5px 15px 0px grey;
+    }
+}
+
+.button input {
+    border-radius: 3rem;
+    font-size: 1rem;
+    height: 3rem;
+    background-image: linear-gradient(170deg, $secondary, $primary);
+    border: none;
+    color: white;
+}
+
+.button input:hover {
+    opacity: .9;
 }
 
 /* FUNCTIONING */
 .functioning {
     padding: 2rem 1rem;
+    font-weight: 1000;
     
     &__list {
         padding-left: 1rem;
@@ -138,6 +181,7 @@ header {
                 width: 1.5rem;
                 height: 1.5rem;
                 position: absolute;
+                font-size: 85%;
                 left: -.75rem;
                 background-color: $primary;
                 color: white;
@@ -151,6 +195,14 @@ header {
                 padding: 0 .25rem;
                 display: flex;
                 justify-content: center;
+            }
+        }
+        
+        &--step3 {
+            background-color: $Clearpurple;
+
+            & i {
+                color: $primary;
             }
         }
     }
@@ -237,27 +289,141 @@ header {
     }
 }
 
-/* RESTAURANT CARD */
+/* RESTAURANT */
+.restaurant { 
+    position: relative;
+    
+    &-image {
+        overflow: hidden;
+        width: 100%;
+        height: 250px;
+        position: relative;
 
+        img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            object-fit: cover;
+        }
+    }
+    
+    &-card {
+        background-color: $cleargrey;
+        padding: 1rem 1.5rem;
+        border-top-left-radius: 2rem;
+        border-top-right-radius: 2rem;
+        position: relative;
+        margin-top: -2rem;
 
+        &__title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            &--name {
+                font-family: 'shrikhandregular';
+            }
+        }
+    }
+}
+
+.menu__parts {
+
+    &-heading {
+        font-weight: 100;
+        text-transform: uppercase;
+        margin-bottom: 0;
+    }
+        
+    > div {
+        width: 3rem;
+        height: 3px;
+        background-color: $greenmint;
+        margin: .5rem 0 .75rem 0;
+    }
+
+    &-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-content: space-between;
+        padding: 0;
+        margin: 0 -.5rem;
+
+        .menu__parts-card {
+            width: 100%;
+            height: 70px;
+            border-radius: 1rem;
+            background-color: white;
+            margin-bottom: 1rem;
+            box-shadow: 0px 10px 10px 0px $shadowgrey;
+
+            .menu__parts-choice {
+                height: 54px;
+                padding: .5rem 1rem;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                div {
+                    flex: 1;
+                    min-width: 150px;
+                    display: flex;
+                    flex-direction: column;
+                    align-content: space-between;
+                    
+                    h3 {
+                        margin: 0;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+
+                    p {
+                        margin: 0;
+                        margin-top: auto;
+                        font-weight: lighter;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                }
+
+                .menu__parts-price {
+                        display: flex;
+                        align-items: flex-end;
+                        margin-bottom: 0;
+                        margin-left: 1rem;
+                        font-weight: bold;
+                }
+
+                i {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+     
 /* FOOTER */
 footer {
     background-color: $darkgrey;
     color: white;
     padding: 2rem 1.5rem;
 
-    & img {
-        width: 100px;
-        height: 1rem;
+    h2 {
+        font-family: 'shrikhandregular';
+        font-size: 1.5rem;
+        margin: 0;
         padding-bottom: 1rem;
     }
 
-    & div {
+    div {
         list-style: none;
         display: flex;
         flex-direction: column;
         
-        & i {
+        i {
             padding-right: 1rem;
             width: 14px;
             height: 14px;
