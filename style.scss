@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'robotolight';
-    src: url('Roboto-Light-webfont.eot');
-    src: url('Roboto-Light-webfont.eot?#iefix') format('embedded-opentype'),
-         url('Roboto-Light-webfont.woff2') format('woff2'),
-         url('Roboto-Light-webfont.woff') format('woff'),
-         url('Roboto-Light-webfont.ttf') format('truetype'),
-         url('Roboto-Light-webfont.svg#robotolight') format('svg');
+    src:url('Roboto-Light-webfont.woff') format('woff'),
+        url('Roboto-Light-webfont.eot'),
+        url('Roboto-Light-webfont.eot?#iefix') format('embedded-opentype'),
+        url('Roboto-Light-webfont.woff2') format('woff2'), 
+        url('Roboto-Light-webfont.ttf') format('truetype'),
+        url('Roboto-Light-webfont.svg#robotolight') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -25,13 +25,12 @@
 $primary: #9356DC;
 $secondary: #FF79DA;
 $tertiary: #99E2D0;
-$Clearpurple: #F5EDFF;
+$tertiarydark: #008766;
+$clearpurple: #F5EDFF;
 $cleargrey: #F6F6F6;
 $grey: #EAEAEA;
 $shadowgrey: #E9E9E9;
 $darkgrey: #353535;
-$greenmint: #99E2D0;
-$greenmintdark: #008766;
 
 * {
     font-family: 'robotolight', arial, sans-serif;
@@ -45,12 +44,13 @@ a {
 body {margin: 0;}
 
 .fa-heart.far {
+    box-sizing: border-box;
     font-size: 1.5rem;
-}
- 
-.fa-heart.far:focus {
-    background-size: auto;
-    background-image: linear-gradient(0deg, $secondary, $primary);
+    cursor: pointer;
+    background: inherit;
+    &:hover {
+        background: linear-gradient(0deg, $secondary, $primary);
+    }
 }
 
 /* HEADER */
@@ -61,14 +61,12 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-    
+    position: relative;    
     .fa-arrow-left.fas {
         position: absolute;
         left: 1rem;
         top: 1.5rem;
     }
-
     img {
         height: 1.75rem;
         width: 10rem;
@@ -84,7 +82,6 @@ header {
     align-content: center;
     justify-content: center;
     position: relative;
-
     &__form {
         height: 3rem;
         width: 100%;
@@ -94,7 +91,6 @@ header {
         justify-content: center;
         position: absolute;
         top: 0;
-
         & i {
             padding: 0 1.5rem;
             line-height: 3rem;
@@ -102,14 +98,12 @@ header {
             align-items: center;
             justify-content: center;
         }
-
         & input {
             font-size: 1rem;
             border: none;
             background-color: $grey;
         }
     }
-
     &__description {
         padding: 1rem 1rem;
         text-align: center;
@@ -120,27 +114,22 @@ header {
     display: flex;
     align-content: center;
     justify-content: center;
-
     &--search {
         width: 14rem; 
         box-shadow: 0px 5px 10px -5px grey;
+        &:hover {
+            box-shadow: 0px 5px 10px 0px grey;
+        }
     }
-
-    &--search:hover {
-        box-shadow: 0px 5px 10px 0px grey;
-    }
-
     &--order {
         width: 12rem;
         margin: 2rem 0;
         box-shadow: 0px 5px 15px -5px grey;
-    }
-
-    &--order:hover {
-        box-shadow: 0px 5px 15px 0px grey;
+        &:hover {
+            box-shadow: 0px 5px 15px 0px grey;
+        }
     }
 }
-
 .button input {
     border-radius: 3rem;
     font-size: 1rem;
@@ -148,24 +137,21 @@ header {
     background-image: linear-gradient(170deg, $secondary, $primary);
     border: none;
     color: white;
-}
-
-.button input:hover {
-    opacity: .9;
+    &:hover {
+        opacity: .9;
+    }
 }
 
 /* FUNCTIONING */
 .functioning {
     padding: 2rem 1rem;
-    font-weight: 1000;
-    
+    font-weight: 900;    
     &__list {
         padding-left: 1rem;
         height: 270px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-
         &--step {
             box-shadow: 0px 5px 10px 5px $shadowgrey;
             height: 70px;
@@ -175,8 +161,7 @@ header {
             display: flex;
             align-items: center;
             flex-direction: row;
-            position: relative;
-            
+            position: relative;            
             & p {
                 width: 1.5rem;
                 height: 1.5rem;
@@ -199,11 +184,20 @@ header {
         }
         
         &--step3 {
-            background-color: $Clearpurple;
-
+            background-color: $clearpurple;
             & i {
                 color: $primary;
             }
+        }
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .functioning__list {
+        height: auto;
+        flex-direction: row;
+        &--step {
+            width: 30%;
         }
     }
 }
@@ -212,20 +206,17 @@ header {
 .restaurants {
     background-color: $cleargrey;
     padding: 2rem 1rem;
-
     &-list {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-    
+        justify-content: space-between;    
         &__card {
             width: 100%;
             height: 250px;
             background-color: white;
             margin: 1rem 0;
             border-radius: 20px;
-            box-shadow: 0px 10px 10px 0px $shadowgrey;
-        
+            box-shadow: 0px 10px 10px 0px $shadowgrey;        
             &--image {
                 height: 70%;
                 overflow: hidden;
@@ -234,14 +225,13 @@ header {
                 position: relative;
                 display: flex;
                 align-items: center;
-                justify-content: center;
-            
+                justify-content: center;           
                 & .new {
                     width: 80px;
                     height: 30px;
                     border-radius: .25rem;
-                    background-color: $greenmint;
-                    color: $greenmintdark;
+                    background-color: $tertiary;
+                    color: $tertiarydark;
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -256,7 +246,6 @@ header {
                     object-fit: cover;
                 }
             }
-
             &--info {
                 height: 30%;
                 padding: 0 1rem;
@@ -266,18 +255,15 @@ header {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                position: relative;
-            
+                position: relative;            
                 & h3 {
                     margin: 0;
                     font-weight: bold;
                 }
-
                 & p {
                     margin: 0;
                 }
-
-                & i {
+                .restaurant__like {
                     display: flex;
                     align-self: flex-end;
                     justify-content: center;
@@ -289,24 +275,31 @@ header {
     }
 }
 
+@media screen and (min-width: 800px) {
+    .restaurants-list {
+        display: grid;
+        grid-template-columns: repeat(2, 49%);
+        &__card {
+            height: 300px;
+        }
+    }
+}
+
 /* RESTAURANT */
 .restaurant { 
-    position: relative;
-    
+    position: relative;   
     &-image {
         overflow: hidden;
         width: 100%;
         height: 250px;
         position: relative;
-
         img {
             width: 100%;
             height: 100%;
             position: absolute;
             object-fit: cover;
         }
-    }
-    
+    }    
     &-card {
         background-color: $cleargrey;
         padding: 1rem 1.5rem;
@@ -314,91 +307,112 @@ header {
         border-top-right-radius: 2rem;
         position: relative;
         margin-top: -2rem;
-
         &__title {
             display: flex;
             align-items: center;
             justify-content: space-between;
-
             &--name {
                 font-family: 'shrikhandregular';
             }
         }
     }
 }
+.menu {
+    &__parts {
 
-.menu__parts {
-
-    &-heading {
-        font-weight: 100;
-        text-transform: uppercase;
-        margin-bottom: 0;
-    }
-        
-    > div {
-        width: 3rem;
-        height: 3px;
-        background-color: $greenmint;
-        margin: .5rem 0 .75rem 0;
-    }
-
-    &-list {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        align-content: space-between;
-        padding: 0;
-        margin: 0 -.5rem;
-
-        .menu__parts-card {
-            width: 100%;
-            height: 70px;
-            border-radius: 1rem;
-            background-color: white;
-            margin-bottom: 1rem;
-            box-shadow: 0px 10px 10px 0px $shadowgrey;
-
-            .menu__parts-choice {
-                height: 54px;
-                padding: .5rem 1rem;
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-
-                div {
-                    flex: 1;
-                    min-width: 150px;
+        &-heading {
+            font-weight: 100;
+            text-transform: uppercase;
+            margin-bottom: 0;
+        }    
+        > div {
+            width: 3rem;
+            height: 3px;
+            background-color: $tertiary;
+            margin: .5rem 0 .75rem 0;
+        }
+        &-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            align-content: space-between;
+            padding: 0;
+            margin: 0 -.5rem;
+            .menu__parts-card {
+                width: 100%;
+                height: 70px;
+                border-radius: 1rem;
+                background-color: $tertiary;
+                margin-bottom: 1rem;
+                overflow: hidden;
+                box-shadow: 0px 10px 10px 0px $shadowgrey;
+                cursor: pointer;
+                .menu__parts-choice {
+                    height: 54px;
+                    padding: .5rem 1rem;
+                    background-color: white;
                     display: flex;
-                    flex-direction: column;
-                    align-content: space-between;
-                    
-                    h3 {
-                        margin: 0;
-                        white-space: nowrap;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
+                    flex-direction: row;
+                    justify-content: space-between;  
+                    div {
+                        flex: 1;
+                        min-width: 150px;
+                        display: flex;
+                        flex-direction: column;
+                        align-content: space-between; 
+                        h3 {
+                            margin: 0;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+                        p {
+                            margin: 0;
+                            margin-top: auto;
+                            font-weight: lighter;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
                     }
-
-                    p {
-                        margin: 0;
-                        margin-top: auto;
-                        font-weight: lighter;
-                        white-space: nowrap;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                    }
-                }
-
-                .menu__parts-price {
+                    .menu__parts-price {
                         display: flex;
                         align-items: flex-end;
                         margin-bottom: 0;
                         margin-left: 1rem;
                         font-weight: bold;
+                    }
                 }
-
                 i {
-                    display: none;
+                    background-color: $tertiary;
+                    color: white;
+                    position: relative;
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (min-width: 900px) {
+    .menu {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        &__parts {
+            width: 30%;
+            padding-right: 1rem;
+            padding-left: 1rem;
+            .menu__parts-choice {
+                transition: margin-right .5s;
+                &:hover {
+                    margin-right: 60px;
+                    i {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
                 }
             }
         }
@@ -410,19 +424,16 @@ footer {
     background-color: $darkgrey;
     color: white;
     padding: 2rem 1.5rem;
-
     h2 {
         font-family: 'shrikhandregular';
         font-size: 1.5rem;
         margin: 0;
         padding-bottom: 1rem;
     }
-
     div {
         list-style: none;
         display: flex;
-        flex-direction: column;
-        
+        flex-direction: column;        
         i {
             padding-right: 1rem;
             width: 14px;
