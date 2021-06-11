@@ -14,6 +14,7 @@
 
 /* Variables */
 /* Colors */
+/* Delay */
 * {
   font-family: 'robotolight', arial, sans-serif;
 }
@@ -51,12 +52,140 @@ body {
 .fa-heart.fas {
   color: linear-gradient(0deg, #FF79DA, #9356DC);
   opacity: 0;
-  -webkit-transition: opacity .25s;
-  transition: opacity .25s;
+  -webkit-transition: opacity .5s;
+  transition: opacity .5s;
 }
 
 .fa-heart.fas:hover {
   opacity: 1;
+}
+
+/* LOADER */
+.loading__spinner {
+  width: 100%;
+  height: 100%;
+  background: rgba(246, 246, 246, 0.75);
+  z-index: -1;
+  position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-animation: loading-disappear 3s both;
+          animation: loading-disappear 3s both;
+}
+
+.loading__spinner--point {
+  width: 20%;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+.loading__spinner--point .point {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 100%;
+  border: solid 0;
+  -webkit-animation: point 2s both;
+          animation: point 2s both;
+}
+
+.loading__spinner--point .point-3 {
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s;
+}
+
+.loading__spinner--point .point-2 {
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+
+.loading__spinner--point .point-1 {
+  background-color: #9356DC;
+}
+
+.loading__spinner--point .point-2 {
+  background-color: #FF79DA;
+}
+
+.loading__spinner--point .point-3 {
+  background-color: #99E2D0;
+}
+
+@-webkit-keyframes loading-disappear {
+  0% {
+    opacity: 1;
+    z-index: 10000;
+  }
+  75% {
+    opacity: .75;
+  }
+  100% {
+    opacity: 0;
+    z-index: -1;
+  }
+}
+
+@keyframes loading-disappear {
+  0% {
+    opacity: 1;
+    z-index: 10000;
+  }
+  75% {
+    opacity: .75;
+  }
+  100% {
+    opacity: 0;
+    z-index: -1;
+  }
+}
+
+@-webkit-keyframes point {
+  0% {
+    -webkit-transform: translateY(0) scale(1);
+            transform: translateY(0) scale(1);
+  }
+  33% {
+    -webkit-transform: translateY(-200%) scale(1.5);
+            transform: translateY(-200%) scale(1.5);
+  }
+  66% {
+    -webkit-transform: translateY(200%) scale(2);
+            transform: translateY(200%) scale(2);
+  }
+  100% {
+    -webkit-transform: translateY(0) scale(1);
+            transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes point {
+  0% {
+    -webkit-transform: translateY(0) scale(1);
+            transform: translateY(0) scale(1);
+  }
+  33% {
+    -webkit-transform: translateY(-200%) scale(1.5);
+            transform: translateY(-200%) scale(1.5);
+  }
+  66% {
+    -webkit-transform: translateY(200%) scale(2);
+            transform: translateY(200%) scale(2);
+  }
+  100% {
+    -webkit-transform: translateY(0) scale(1);
+            transform: translateY(0) scale(1);
+  }
 }
 
 /* HEADER */
@@ -197,6 +326,7 @@ header img {
 
 /* FUNCTIONING */
 .functioning {
+  background-color: white;
   padding: 2rem 1rem;
   font-weight: 900;
 }
@@ -392,7 +522,7 @@ header img {
 
 .restaurants-list__card--info .restaurant__like {
   position: absolute;
-  right: 2.5rem;
+  right: 3.5rem;
   bottom: 3.5rem;
 }
 
@@ -459,13 +589,101 @@ header img {
   top: 2.6rem;
 }
 
+@-webkit-keyframes menu-appear {
+  from {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes menu-appear {
+  from {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.delay {
+  -webkit-animation: menu-appear .5s;
+          animation: menu-appear .5s;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+}
+
+.delay-1 {
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+}
+
+.delay-2 {
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+
+.delay-3 {
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s;
+}
+
+.delay-4 {
+  -webkit-animation-delay: 0.8s;
+          animation-delay: 0.8s;
+}
+
+.delay-5 {
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+.delay-6 {
+  -webkit-animation-delay: 1.2s;
+          animation-delay: 1.2s;
+}
+
+.delay-7 {
+  -webkit-animation-delay: 1.4s;
+          animation-delay: 1.4s;
+}
+
+.delay-8 {
+  -webkit-animation-delay: 1.6s;
+          animation-delay: 1.6s;
+}
+
+.delay-9 {
+  -webkit-animation-delay: 1.8s;
+          animation-delay: 1.8s;
+}
+
+.delay-10 {
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+}
+
+.delay-11 {
+  -webkit-animation-delay: 2.2s;
+          animation-delay: 2.2s;
+}
+
 .menu__parts-heading {
   font-weight: 100;
   text-transform: uppercase;
   margin-bottom: 0;
 }
 
-.menu__parts > div {
+.menu__parts-heading-underline {
   width: 3rem;
   height: 3px;
   background-color: #99E2D0;
@@ -500,6 +718,8 @@ header img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-transform-origin: top;
+          transform-origin: top;
 }
 
 .menu__parts-list .menu__parts-card .menu__parts-choice {
@@ -592,18 +812,22 @@ header img {
 }
 
 .menu__parts-list .menu__parts-card .restaurant__check i {
+  font-size: 125%;
   background-color: #99E2D0;
   color: white;
   position: relative;
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
-  -webkit-transition: -webkit-transform .5s .10s;
-  transition: -webkit-transform .5s .10s;
-  transition: transform .5s .10s;
-  transition: transform .5s .10s, -webkit-transform .5s .10s;
+  -webkit-transition: -webkit-transform .5s .1s;
+  transition: -webkit-transform .5s .1s;
+  transition: transform .5s .1s;
+  transition: transform .5s .1s, -webkit-transform .5s .1s;
 }
 
 @media screen and (min-width: 950px) {
+  .restaurant-image {
+    height: 400px;
+  }
   .menu {
     width: 100%;
     display: -webkit-box;

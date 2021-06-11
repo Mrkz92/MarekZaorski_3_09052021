@@ -32,6 +32,9 @@ $grey: #EAEAEA;
 $shadowgrey: #E9E9E9;
 $darkgrey: #353535;
 
+    /* Delay */
+$appear-delay: .2s;
+
 * {
     font-family: 'robotolight', arial, sans-serif;
 }
@@ -63,9 +66,77 @@ body {margin: 0;}
 .fa-heart.fas {
     color: linear-gradient(0deg, $secondary, $primary);
     opacity: 0;
-    transition: opacity .25s;
+    transition: opacity .5s;
     &:hover {
         opacity: 1;
+    }
+}
+
+/* LOADER */
+.loading__spinner {
+    width: 100%;
+    height: 100%;
+    background: rgba($color: $cleargrey, $alpha: .75);
+    z-index: -1;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    animation: loading-disappear 3s both;
+    &--point {
+        width: 20%;
+        height: auto;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: relative;
+        .point {
+            width: 1rem;
+            height: 1rem;
+            border-radius: 100%;
+            border: solid 0;
+            animation: point 2s both;
+            @for $i from 3 to 1 {
+                &-#{$i} {
+                    animation-delay: $appear-delay * $i;
+                }
+            }
+            &-1 {
+                background-color: $primary;
+            }
+            &-2 {
+                background-color: $secondary;
+            }
+            &-3 {
+                background-color: $tertiary;
+            }
+        }
+    }
+}
+@keyframes loading-disappear {
+    0% {
+        opacity: 1;
+        z-index: 10000;
+    }
+    75% {
+        opacity: .75;
+    }
+    100% {
+        opacity: 0;
+        z-index: -1;
+    }
+}
+@keyframes point {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    33% {
+        transform: translateY(-200%) scale(1.5);
+    }
+    66% {
+        transform: translateY(200%) scale(2);
+    }
+    100% {
+        transform: translateY(0) scale(1);
     }
 }
 
@@ -160,6 +231,7 @@ header {
 
 /* FUNCTIONING */
 .functioning {
+    background-color: white;
     padding: 2rem 1rem;
     font-weight: 900;    
     &__list {
@@ -281,7 +353,7 @@ header {
                 }
                 .restaurant__like {
                     position: absolute;
-                    right: 2.5rem;
+                    right: 3.5rem;
                     bottom: 3.5rem;
                 }
             }
@@ -336,15 +408,34 @@ header {
         }
     }
 }
+
+@keyframes menu-appear {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+.delay {
+    animation: menu-appear .5s;
+    animation-fill-mode: both;
+    @for $i from 1 to 12 {
+        &-#{$i} {
+            animation-delay: $appear-delay * $i;
+        }
+    }
+}
 .menu {
     &__parts {
-
         &-heading {
             font-weight: 100;
             text-transform: uppercase;
             margin-bottom: 0;
-        }    
-        > div {
+        }
+        &-heading-underline {
             width: 3rem;
             height: 3px;
             background-color: $tertiary;
@@ -367,6 +458,7 @@ header {
                 box-shadow: 0px 10px 10px 0px $shadowgrey;
                 cursor: pointer;
                 display: flex;
+                transform-origin: top;
                 .menu__parts-choice {
                     height: 54px;
                     padding: .5rem 1rem;
@@ -420,11 +512,12 @@ header {
                     justify-content: center;
                     align-items: center;
                     i {
+                        font-size: 125%;
                         background-color: $tertiary;
                         color: white;
                         position: relative;
                         transform: rotate(90deg);
-                        transition: transform .5s .10s;
+                        transition: transform .5s .1s;
                     }
                 }
             }
@@ -434,6 +527,9 @@ header {
 
 
 @media screen and (min-width: 950px) {
+    .restaurant-image {
+        height: 400px;
+    }
     .menu {
         width: 100%;
         display: flex;
