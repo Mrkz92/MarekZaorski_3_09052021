@@ -43,13 +43,29 @@ a {
 
 body {margin: 0;}
 
-.fa-heart.far {
-    box-sizing: border-box;
-    font-size: 1.5rem;
-    cursor: pointer;
-    background: inherit;
+.restaurant__like {
+    position: relative;
+    .fa-heart.far, .fa-heart.fas {
+        box-sizing: border-box;
+        font-size: 1.5rem;
+        cursor: pointer;
+        background: inherit;
+        position: absolute;
+        &:hover {
+            background: linear-gradient(0deg, $secondary, $primary);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+    }
+}
+
+.fa-heart.fas {
+    color: linear-gradient(0deg, $secondary, $primary);
+    opacity: 0;
+    transition: opacity .25s;
     &:hover {
-        background: linear-gradient(0deg, $secondary, $primary);
+        opacity: 1;
     }
 }
 
@@ -264,11 +280,9 @@ header {
                     margin: 0;
                 }
                 .restaurant__like {
-                    display: flex;
-                    align-self: flex-end;
-                    justify-content: center;
                     position: absolute;
-                    line-height: 75px;
+                    right: 2.5rem;
+                    bottom: 3.5rem;
                 }
             }
         }
@@ -314,6 +328,11 @@ header {
             &--name {
                 font-family: 'shrikhandregular';
             }
+            .restaurant__like {
+                position: absolute;
+                right: 3.7rem;
+                top: 2.6rem
+            }
         }
     }
 }
@@ -347,6 +366,7 @@ header {
                 overflow: hidden;
                 box-shadow: 0px 10px 10px 0px $shadowgrey;
                 cursor: pointer;
+                display: flex;
                 .menu__parts-choice {
                     height: 54px;
                     padding: .5rem 1rem;
@@ -354,6 +374,14 @@ header {
                     display: flex;
                     flex-direction: row;
                     justify-content: space-between;  
+                    width: 100%;
+                    transition: width .5s;
+                    &:hover {
+                        width: calc(100% - 80px);
+                        + .restaurant__check i {
+                            transform: rotate(360deg);
+                        }
+                    }
                     div {
                         flex: 1;
                         min-width: 150px;
@@ -375,6 +403,7 @@ header {
                             text-overflow: ellipsis;
                         }
                     }
+                }
                     .menu__parts-price {
                         display: flex;
                         align-items: flex-end;
@@ -382,11 +411,21 @@ header {
                         margin-left: 1rem;
                         font-weight: bold;
                     }
-                }
-                i {
-                    background-color: $tertiary;
-                    color: white;
+                .restaurant__check{
+                    width: 0;
+                    box-sizing: border-box;
                     position: relative;
+                    left: 25px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    i {
+                        background-color: $tertiary;
+                        color: white;
+                        position: relative;
+                        transform: rotate(90deg);
+                        transition: transform .5s .10s;
+                    }
                 }
             }
         }
@@ -394,7 +433,7 @@ header {
 }
 
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 950px) {
     .menu {
         width: 100%;
         display: flex;
@@ -404,17 +443,6 @@ header {
             width: 30%;
             padding-right: 1rem;
             padding-left: 1rem;
-            .menu__parts-choice {
-                transition: margin-right .5s;
-                &:hover {
-                    margin-right: 60px;
-                    i {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                    }
-                }
-            }
         }
     }
 }

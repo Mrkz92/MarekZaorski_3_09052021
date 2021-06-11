@@ -27,17 +27,36 @@ body {
   margin: 0;
 }
 
-.fa-heart.far {
+.restaurant__like {
+  position: relative;
+}
+
+.restaurant__like .fa-heart.far, .restaurant__like .fa-heart.fas {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-size: 1.5rem;
   cursor: pointer;
   background: inherit;
+  position: absolute;
 }
 
-.fa-heart.far:hover {
+.restaurant__like .fa-heart.far:hover, .restaurant__like .fa-heart.fas:hover {
   background: -webkit-gradient(linear, left bottom, left top, from(#FF79DA), to(#9356DC));
   background: linear-gradient(0deg, #FF79DA, #9356DC);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.fa-heart.fas {
+  color: linear-gradient(0deg, #FF79DA, #9356DC);
+  opacity: 0;
+  -webkit-transition: opacity .25s;
+  transition: opacity .25s;
+}
+
+.fa-heart.fas:hover {
+  opacity: 1;
 }
 
 /* HEADER */
@@ -372,16 +391,9 @@ header img {
 }
 
 .restaurants-list__card--info .restaurant__like {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   position: absolute;
-  line-height: 75px;
+  right: 2.5rem;
+  bottom: 3.5rem;
 }
 
 @media screen and (min-width: 800px) {
@@ -441,6 +453,12 @@ header img {
   font-family: 'shrikhandregular';
 }
 
+.restaurant-card__title .restaurant__like {
+  position: absolute;
+  right: 3.7rem;
+  top: 2.6rem;
+}
+
 .menu__parts-heading {
   font-weight: 100;
   text-transform: uppercase;
@@ -479,6 +497,9 @@ header img {
   -webkit-box-shadow: 0px 10px 10px 0px #E9E9E9;
           box-shadow: 0px 10px 10px 0px #E9E9E9;
   cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .menu__parts-list .menu__parts-card .menu__parts-choice {
@@ -495,6 +516,18 @@ header img {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  width: 100%;
+  -webkit-transition: width .5s;
+  transition: width .5s;
+}
+
+.menu__parts-list .menu__parts-card .menu__parts-choice:hover {
+  width: calc(100% - 80px);
+}
+
+.menu__parts-list .menu__parts-card .menu__parts-choice:hover + .restaurant__check i {
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
 }
 
 .menu__parts-list .menu__parts-card .menu__parts-choice div {
@@ -529,7 +562,7 @@ header img {
   text-overflow: ellipsis;
 }
 
-.menu__parts-list .menu__parts-card .menu__parts-choice .menu__parts-price {
+.menu__parts-list .menu__parts-card .menu__parts-price {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -541,13 +574,36 @@ header img {
   font-weight: bold;
 }
 
-.menu__parts-list .menu__parts-card i {
+.menu__parts-list .menu__parts-card .restaurant__check {
+  width: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+  left: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.menu__parts-list .menu__parts-card .restaurant__check i {
   background-color: #99E2D0;
   color: white;
   position: relative;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  -webkit-transition: -webkit-transform .5s .10s;
+  transition: -webkit-transform .5s .10s;
+  transition: transform .5s .10s;
+  transition: transform .5s .10s, -webkit-transform .5s .10s;
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 950px) {
   .menu {
     width: 100%;
     display: -webkit-box;
@@ -565,24 +621,6 @@ header img {
     width: 30%;
     padding-right: 1rem;
     padding-left: 1rem;
-  }
-  .menu__parts .menu__parts-choice {
-    -webkit-transition: margin-right .5s;
-    transition: margin-right .5s;
-  }
-  .menu__parts .menu__parts-choice:hover {
-    margin-right: 60px;
-  }
-  .menu__parts .menu__parts-choice:hover i {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
   }
 }
 
