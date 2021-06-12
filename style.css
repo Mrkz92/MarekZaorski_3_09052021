@@ -44,13 +44,11 @@ body {
 .restaurant__like .fa-heart.far:hover, .restaurant__like .fa-heart.fas:hover {
   background: -webkit-gradient(linear, left bottom, left top, from(#FF79DA), to(#9356DC));
   background: linear-gradient(0deg, #FF79DA, #9356DC);
-  background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
 
 .fa-heart.fas {
-  color: linear-gradient(0deg, #FF79DA, #9356DC);
   opacity: 0;
   -webkit-transition: opacity .5s;
   transition: opacity .5s;
@@ -530,7 +528,6 @@ header img {
   .restaurants-list {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: (49%)[2];
         grid-template-columns: repeat(2, 49%);
   }
   .restaurants-list__card {
